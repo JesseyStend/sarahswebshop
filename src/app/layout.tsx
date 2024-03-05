@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <nav className="fixed items-center flex bg-primary min-h-24 w-full shadow-lg z-10 px-8 ">
           <h3 className="flex-auto">Sarah&apos;s oldies</h3>
-          <div className="flex-none grid grid-cols-5 gap-4 items-center">
+          <div className="hidden flex-none lg:grid grid-cols-5 gap-4 items-center">
             <Link href="#OverMij" className=" text-xl font-bold">
               Over mij
             </Link>

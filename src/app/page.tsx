@@ -1,51 +1,41 @@
-import ChevronLeft from "@/icons/ChevronLeft";
-import ChevronRight from "@/icons/ChevronRight";
-import { twMerge } from "tailwind-merge";
-
-interface TextfieldProps {
-  inputProps?: {
-    className?: string;
-    multiLine?: boolean;
-  };
-  label?: string;
-}
-
-const Textfield: React.FunctionComponent<TextfieldProps> = ({
-  label,
-  inputProps,
-}) => {
-  return (
-    <div className="grid grid-col-1 gap-2">
-      {label && <h5>{label}</h5>}
-      {inputProps?.multiLine ? (
-        <textarea
-          className={twMerge(
-            "rounded-md bg-background border border-text p-2 text-xl",
-            inputProps?.className
-          )}
-        />
-      ) : (
-        <input
-          className={twMerge(
-            "rounded-md bg-background border border-text p-2 text-xl",
-            inputProps?.className
-          )}
-        />
-      )}
-    </div>
-  );
-};
+import { EmailForm, formValue } from "@/components/emailFrom";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between pt-24">
-      <div className=" bg-slate-200 h-[600px] w-full relative">
-        <ChevronLeft className="w-24 h-24 absolute left-8 top-1/2 -translate-y-1/2 drop-shadow-lg" />
-        <ChevronRight className="w-24 h-24 absolute right-8 top-1/2 -translate-y-1/2 drop-shadow-lg" />
-      </div>
-      <div className=" px-24 py-8 w-full flex items-center" id="OverMij">
-        <div className="flex-auto pr-16 grid grid-col-1 gap-4">
-          <h3>Over mij</h3>
+      <Carousel className="w-full bg-accent">
+        <CarouselContent>
+          {Array.from({ length: 3 }).map((_, index) => (
+            <CarouselItem key={index}>
+              <Card className=" rounded-none">
+                <CardContent className="flex items-center justify-center p-6 h-[600px]">
+                  <span className="text-4xl font-semibold">{index + 1}</span>
+                </CardContent>
+              </Card>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+      <Card
+        className="p-8 rounded-none border-none bg-background w-full xl:px-24"
+        id="OverMij"
+      >
+        <CardHeader className="p-none">
+          <CardTitle>Over mij</CardTitle>
+        </CardHeader>
+
+        <div className="bg-slate-400 aspect-video ml-6 h-[350px] lg:float-right"></div>
+        <CardContent className="p-none grid grid-cols-1 gap-4">
           <p>
             Hi! Wat leuk dat je kijkt op mijn pagina. Welkom! Ik ben Sarah, 24
             jaar en ik verhuur hobbymatig mijn Lincoln Continental Mark IV uit
@@ -71,15 +61,18 @@ export default function Home() {
             het contactformulier in te vullen onderaan de pagina en wie weet
             kunnen we wat voor elkaar betekenen voor uw speciale gelegenheid!
           </p>
-        </div>
-        <div className="flex-none bg-slate-400 w-[40em] h-[22em]"></div>
-      </div>
-      <div
-        className="px-24 py-8 w-full flex bg-accent items-center"
+        </CardContent>
+      </Card>
+      <Card
+        className="p-8 rounded-none bg-accent w-full xl:px-24"
         id="MijnAuto"
       >
-        <div className="flex-auto pr-16 grid grid-col-1 gap-4">
-          <h3>Mijn auto</h3>
+        <div className="bg-slate-400 aspect-video ml-6 h-[350px] lg:float-right"></div>
+        <CardHeader>
+          <CardTitle>Mijn auto</CardTitle>
+        </CardHeader>
+
+        <CardContent className="p-none grid grid-cols-1 gap-4">
           <p>
             Ik ben Sarah, 24 jaar en ik heb een hart voor oldtimers. Sinds dat
             ik mijn eerste bijbaantje had op mijn vijftiende als vakkenvuller
@@ -98,32 +91,14 @@ export default function Home() {
             bijbaantjes volop gespaard. Na 6 jaar heb ik dan eindelijk deze
             mooie Lincoln Continental Mark IV uit 1975 kunnen kopen.
           </p>
-        </div>
-        <div className="flex-none bg-slate-400 w-[40em] h-[22em]"></div>
+        </CardContent>
+      </Card>
+
+      <div className="px-8 py-8 w-full bg-primary sm:px-24" id="Contact">
+        <h4 className="pb-4">Neem contact op</h4>
+
+        <EmailForm />
       </div>
-      <form className="px-24 py-8 w-full bg-primary" id="Contact">
-        <h4>Neem contact op</h4>
-        <div className="grid grid-cols-2 divide-x divide-text pb-4">
-          <div className="grid grid-cols-1 gap-2 pr-4">
-            <Textfield label="Naam" />
-            <Textfield label="Telefoonnummer" />
-            <Textfield label="E-mail adres" />
-          </div>
-          <div className="grid grid-cols-1 gap-2 pl-4">
-            <Textfield label="Voor welke gelegenheid" />
-            <Textfield
-              label="Telefoonnummer"
-              inputProps={{ className: "min-h-36", multiLine: true }}
-            />
-          </div>
-        </div>
-        <button
-          type="submit"
-          className=" bg-background border-text rounded-xl border-2 py-2 px-4 font-bold"
-        >
-          Verzenden
-        </button>
-      </form>
     </main>
   );
 }
