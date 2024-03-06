@@ -40,8 +40,8 @@ const MessageUsEmail = ({
             <Hr className="my-[16px] mx-0 w-full" />
             <Text className="text-[#666666] text-[12px]">
               telefoonnummer: {phone}
-              email: {email}
             </Text>
+            <Text className="text-[#666666] text-[12px]">email: {email}</Text>
           </Container>
         </Body>
       </Tailwind>
