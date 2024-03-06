@@ -58,7 +58,7 @@ export function EmailForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="grid grid-rows-3 grid-flow-col gap-4">
+        <div className="grid grid-rows-6 grid-flow-col gap-4 sm:grid-rows-3">
           <FormField
             control={form.control}
             name="name"

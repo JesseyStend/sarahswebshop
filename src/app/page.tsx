@@ -30,11 +30,11 @@ export default function Home() {
         className="p-8 rounded-none border-none bg-background w-full xl:px-24"
         id="OverMij"
       >
+        <div className="bg-slate-400 aspect-video ml-6 w-full lg:w-[600px] float-right"></div>
         <CardHeader className="p-none">
           <CardTitle>Over mij</CardTitle>
         </CardHeader>
 
-        <div className="bg-slate-400 aspect-video ml-6 h-[350px] lg:float-right"></div>
         <CardContent className="p-none grid grid-cols-1 gap-4">
           <p>
             Hi! Wat leuk dat je kijkt op mijn pagina. Welkom! Ik ben Sarah, 24
@@ -67,9 +67,10 @@ export default function Home() {
         className="p-8 rounded-none bg-accent w-full xl:px-24"
         id="MijnAuto"
       >
-        <div className="bg-slate-400 aspect-video ml-6 h-[350px] lg:float-right"></div>
+        <div className="bg-slate-400 aspect-video ml-6 w-full lg:w-[600px] float-right"></div>
+
         <CardHeader>
-          <CardTitle>Mijn auto</CardTitle>
+          <CardTitle className="p-none">Mijn auto</CardTitle>
         </CardHeader>
 
         <CardContent className="p-none grid grid-cols-1 gap-4">
@@ -94,11 +95,18 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <div className="px-8 py-8 w-full bg-primary sm:px-24" id="Contact">
-        <h4 className="pb-4">Neem contact op</h4>
+      <Card
+        className="p-8 rounded-none border-none bg-primary w-full xl:px-24"
+        id="Contact"
+      >
+        <CardHeader>
+          <CardTitle className="p-none">Neem contact op</CardTitle>
+        </CardHeader>
 
-        <EmailForm />
-      </div>
+        <CardContent>
+          <EmailForm />
+        </CardContent>
+      </Card>
     </main>
   );
 }
