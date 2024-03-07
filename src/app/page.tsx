@@ -30,7 +30,8 @@ export default function Home() {
         className="p-8 rounded-none border-none bg-background w-full xl:px-24"
         id="OverMij"
       >
-        <div className="bg-slate-400 aspect-video ml-6 w-full lg:w-[600px] float-right"></div>
+        <div className="bg-slate-400 aspect-video ml-6 lg:w-[600px] float-right"></div>
+
         <CardHeader className="p-none">
           <CardTitle>Over mij</CardTitle>
         </CardHeader>
@@ -62,12 +63,14 @@ export default function Home() {
             kunnen we wat voor elkaar betekenen voor uw speciale gelegenheid!
           </p>
         </CardContent>
+
+        <div className="inline bg-slate-400 aspect-video ml-6 w-full float-right lg:hidden"></div>
       </Card>
       <Card
         className="p-8 rounded-none bg-accent w-full xl:px-24"
         id="MijnAuto"
       >
-        <div className="bg-slate-400 aspect-video ml-6 w-full lg:w-[600px] float-right"></div>
+        <div className="bg-slate-400 aspect-video ml-6 lg:w-[600px] float-right"></div>
 
         <CardHeader>
           <CardTitle className="p-none">Mijn auto</CardTitle>
@@ -93,6 +96,8 @@ export default function Home() {
             mooie Lincoln Continental Mark IV uit 1975 kunnen kopen.
           </p>
         </CardContent>
+
+        <div className="inline bg-slate-400 aspect-video ml-6 w-full float-right lg:hidden"></div>
       </Card>
 
       <Card
