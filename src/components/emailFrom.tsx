@@ -22,6 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "./ui/use-toast";
 
 export type formValue = z.infer<typeof formSchema>;
 
@@ -34,6 +35,8 @@ const formSchema = z.object({
 });
 
 export function EmailForm() {
+  const { toast } = useToast();
+
   const form = useForm<formValue>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -49,6 +52,12 @@ export function EmailForm() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(values),
+      });
+
+      toast({
+        title: "Email verzonden",
+        description:
+          "Uw email is naar ons verzonden, wij nemen zo snel mogelijk contact met u op",
       });
     } catch (error: any) {
       form.setError("root", { message: error });

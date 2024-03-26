@@ -1,3 +1,4 @@
+"use server";
 import { EmailForm, formValue } from "@/components/emailFrom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -7,18 +8,35 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@/components/ui/carousel";
+import path from "path";
+import { promises as fs } from "fs";
+import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const imageDirectory = path.join(process.cwd(), "/public/images/hero");
+  const imageFilenames = await fs.readdir(imageDirectory);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between pt-24">
       <Carousel className="w-full bg-accent">
         <CarouselContent>
-          {Array.from({ length: 3 }).map((_, index) => (
+          {imageFilenames.map((imageFileName, index) => (
             <CarouselItem key={index}>
-              <Card className=" rounded-none">
-                <CardContent className="flex items-center justify-center p-6 h-[600px]">
-                  <span className="text-4xl font-semibold">{index + 1}</span>
-                </CardContent>
+              <Card className=" rounded-none w-full h-[600px] relative">
+                <Image
+                  src={`/images/hero/${imageFileName}`}
+                  alt="Hero image"
+                  width={1920}
+                  height={1080}
+                  className="w-full h-full object-cover absolute top-0 left-0 brightness-50"
+                />
+                <Image
+                  src={`/images/hero/${imageFileName}`}
+                  alt="Hero image"
+                  width={1920}
+                  height={1080}
+                  className="w-full h-full object-contain relative z-10"
+                />
               </Card>
             </CarouselItem>
           ))}
