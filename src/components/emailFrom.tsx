@@ -55,9 +55,8 @@ export function EmailForm() {
       });
 
       toast({
-        title: "Email verzonden",
-        description:
-          "Uw email is naar ons verzonden, wij nemen zo snel mogelijk contact met u op",
+        title: "Uw email is naar ons verzonden",
+        description: "Wij nemen zo snel mogelijk contact met u op",
       });
     } catch (error: any) {
       form.setError("root", { message: error });
